@@ -137,11 +137,11 @@ namespace connector_technical_eid
                         case CKK.EC:
                             SHA384 sha = new SHA384CryptoServiceProvider();
                             byte[] HashValue = sha.ComputeHash(digestValue);
-                            session.SignInit(new Mechanism(CKM.ECDSA), (PrivateKey)privateKey);
+                            session.SignInit(new Mechanism(CKM.ECDSA), privateKey);
                             encryptedData = session.Sign(HashValue);
                             break;
                         case CKK.RSA:
-                            session.SignInit(new Mechanism(CKM.SHA1_RSA_PKCS), (PrivateKey)privateKey);
+                            session.SignInit(new Mechanism(CKM.SHA1_RSA_PKCS), privateKey);
                             var data = DataToSign(digestValue, digestAlgo, privateKey);
                             encryptedData = session.Sign(digestValue);
                             break;
