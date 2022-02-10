@@ -141,7 +141,7 @@ namespace connector_technical_eid
                             encryptedData = session.Sign(HashValue);
                             break;
                         case CKK.RSA:
-                            session.SignInit(new Mechanism(CKM.SHA1_RSA_PKCS), privateKey);
+                            session.SignInit(new Mechanism(CKM.RSA_PKCS), privateKey);
                             var data = DataToSign(digestValue, digestAlgo, privateKey);
                             encryptedData = session.Sign(digestValue);
                             break;
